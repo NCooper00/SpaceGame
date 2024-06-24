@@ -3,6 +3,7 @@ using EZCameraShake;
 
 public class Player : MonoBehaviour
 {
+    // test
 
     [SerializeField]
     private int MaxHealth = 1000;
