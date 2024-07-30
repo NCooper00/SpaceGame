@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     // test
 
     [SerializeField]
-    private int MaxHealth = 1000;
+    // private int MaxHealth = 1000;
     private int Health = 1000;
 
     public float Speed = 5f;
@@ -25,13 +25,13 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     public Animator animator;
-    public AudioManager audio;
+    public AudioManager targetAudio;
 
     Vector2 movement;
 
     void Awake() {
         _rigidbody = GetComponent<Rigidbody2D>();
-        audio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        targetAudio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
     }
 
     void Start()
@@ -117,12 +117,12 @@ public class Player : MonoBehaviour
     }
 
     void PlayRocketSound() {
-        audio.Play("Rocket");
+        targetAudio.Play("Rocket");
         rocketSoundPlaying = true;
     }
 
     void StopRocketSound() {
-        audio.Stop("Rocket");
+        targetAudio.Stop("Rocket");
         rocketSoundPlaying = false;
     }
 

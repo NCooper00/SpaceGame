@@ -6,7 +6,7 @@ public class Parallax : MonoBehaviour
 {
 
     private Vector3 startpos;
-    public GameObject camera;
+    [SerializeField] private GameObject targetCamera;
     public float parallaxEffect;
 
     private float offset;
@@ -25,11 +25,11 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float temp = (camera.transform.position.x * (1 - parallaxEffect));
-        float distX = (camera.transform.position.x * parallaxEffect);
-        float distY = (camera.transform.position.y * parallaxEffect);
-        // The Y position below can be set to "DistY" to only apply only horizontal following, "camera.transform.position.y" for both.
-        transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, transform.position.z);
+        float temp = (targetCamera.transform.position.x * (1 - parallaxEffect));
+        float distX = (targetCamera.transform.position.x * parallaxEffect);
+        float distY = (targetCamera.transform.position.y * parallaxEffect);
+        // The Y position below can be set to "DistY" to only apply only horizontal following, "targetCamera.transform.position.y" for both.
+        transform.position = new Vector3(targetCamera.transform.position.x, targetCamera.transform.position.y, transform.position.z);
 
         // The Y position below can be set to "0" to only apply only horizontal parallax, "distY * (parallaxEffect / 5)" for both.
         mat.SetTextureOffset("_MainTex", new Vector2(distX * (parallaxEffect / 5), distY * (parallaxEffect / 5)));

@@ -17,11 +17,11 @@ public class EnemyBullet : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
 
-    public AudioManager audio;
+    public AudioManager targetAudio;
 
     
     void Awake() {
-        audio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        targetAudio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
         bulletLifeReset += bulletLife;
     }
 
@@ -48,7 +48,7 @@ public class EnemyBullet : MonoBehaviour
         if (hitInfo.gameObject.layer != 7) {
             anim.SetBool("hit", true);
             rb.velocity = new Vector2(0f, 0f);
-            audio.PlayFull("TurretShotImpact");
+            targetAudio.PlayFull("TurretShotImpact");
             bulletDamage = bulletDamage / 2;
         }
 

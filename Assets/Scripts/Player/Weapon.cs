@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
 
     public GameObject bulletPrefab;
-    public AudioManager audio;
+    public AudioManager targetAudio;
 
     public Animator anim;
 
@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
     
     void Awake() {
         fireRateReset += fireRate;
-        audio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        targetAudio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
 
         hasNotShot = true;
 
@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
     }
 
     void Shoot() {
-        audio.Play("TurretShot");
+        targetAudio.Play("TurretShot");
         anim.SetBool("shooting", true);
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }

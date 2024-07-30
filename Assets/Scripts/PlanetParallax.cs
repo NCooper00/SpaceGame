@@ -7,7 +7,7 @@ public class PlanetParallax : MonoBehaviour
 
     private Vector3 startPos;
     private Vector3 currentPos;
-    public GameObject camera;
+    [SerializeField] private GameObject targetCamera;
     public float parallaxEffect;
 
     public float offsetX = -20f;
@@ -31,11 +31,11 @@ public class PlanetParallax : MonoBehaviour
 
     void FixedUpdate()
     {
-        float tempX = (camera.transform.position.x * (1 - parallaxEffect));
-        float tempY = (camera.transform.position.y * (1 - parallaxEffect));
-        float distX = (camera.transform.position.x * parallaxEffect);
-        float distY = (camera.transform.position.y * parallaxEffect);
-        // The Y position below can be set to "DistY" to only apply only horizontal following, "camera.transform.position.y" for both.
+        float tempX = (targetCamera.transform.position.x * (1 - parallaxEffect));
+        float tempY = (targetCamera.transform.position.y * (1 - parallaxEffect));
+        float distX = (targetCamera.transform.position.x * parallaxEffect);
+        float distY = (targetCamera.transform.position.y * parallaxEffect);
+        // The Y position below can be set to "DistY" to only apply only horizontal following, "targetCamera.transform.position.y" for both.
         transform.position = new Vector3(tempX + offsetX + (distX * (parallaxEffect / 5)), tempY + offsetY + (distY * (parallaxEffect / 5)), 70f);
 
         // The Y position below can be set to "0" to only apply only horizontal parallax, "distY * (parallaxEffect / 5)" for both.

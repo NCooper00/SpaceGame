@@ -13,7 +13,7 @@ public class EnemyWeapon : MonoBehaviour
     private float distance;
 
     public GameObject bulletPrefab;
-    public AudioManager audio;
+    public AudioManager targetAudio;
 
     public float fireRate = 1f;
     public float agroRange = 10f;
@@ -24,7 +24,7 @@ public class EnemyWeapon : MonoBehaviour
     
     void Awake() {
         fireRateReset += fireRate;
-        audio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        targetAudio = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
 
 
         RIGHT = true;
@@ -45,7 +45,7 @@ public class EnemyWeapon : MonoBehaviour
     }
 
     void Shoot() {
-        audio.Play("TurretShot");
+        targetAudio.Play("TurretShot");
 
         if (RIGHT) {
             Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
